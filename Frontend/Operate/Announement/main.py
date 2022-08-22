@@ -4,6 +4,7 @@ import requests
 
 URL = 'http://127.0.0.1:8000'
 
+#
 class Version_Module(unittest.TestCase) :
     def test_getAppVersion(self):
         r=requests.get(URL+'/canteen/operate/announcement/list')

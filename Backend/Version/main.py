@@ -4,6 +4,7 @@ import json
 
 URL = 'http://127.0.0.1:8000'
 
+#
 # 针对版本模块的测试
 class Version_Module(unittest.TestCase) :
     initialUsername="ceobe"

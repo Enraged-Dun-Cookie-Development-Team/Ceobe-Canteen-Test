@@ -5,7 +5,7 @@ import hashlib
 
 URL = 'http://127.0.0.1:8000'
 
-
+#
 # 针对用户模块的测试类
 class User_Module(unittest.TestCase) :
     # 需要储存为后续测试所用变量

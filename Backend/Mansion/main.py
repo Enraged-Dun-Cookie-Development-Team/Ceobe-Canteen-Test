@@ -4,6 +4,7 @@ import json
 
 URL = 'http://127.0.0.1:8000'
 
+#
 # 针对饼学大厦模块的测试
 class Mansion_Module(unittest.TestCase) :
     initialUsername="ceobe"
