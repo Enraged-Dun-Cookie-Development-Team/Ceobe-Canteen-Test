@@ -5,7 +5,7 @@ import hashlib
 
 URL = 'http://127.0.0.1:8000/api/v1'
 
-#
+# 每次测试时务必更换request body内容 or会得到C0000B版本存在
 # 针对资源模块的测试
 class Resource_Module(unittest.TestCase) :
     initialUsername="ceobe"
