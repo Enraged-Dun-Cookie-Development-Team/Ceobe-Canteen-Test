@@ -202,7 +202,7 @@ class Version_Module(unittest.TestCase) :
         }
         r=requests.post(URL+'/admin/version/phone',
                    headers={"token":self.cookerToken},
-                   json=self.list_dumps(content))
+                   json=json.dumps(content))
         obj=json.loads(r.text)
         assert obj['code'] is None
 
@@ -215,7 +215,7 @@ class Version_Module(unittest.TestCase) :
         }
         r=requests.post(URL+'/admin/version/phone',
                    headers={"token":self.architectToken},
-                   json=self.list_dumps(content))
+                   json=json.dumps(content))
         obj=json.loads(r.text)
         self.assertEqual(obj['code'],'A0002')
 

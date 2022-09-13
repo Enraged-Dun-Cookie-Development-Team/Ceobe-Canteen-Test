@@ -5,7 +5,6 @@ import hashlib
 
 URL = 'http://127.0.0.1:8000/api/v1'
 
-# 每次测试时务必更换request body内容 or会得到C0000B版本存在
 # 针对资源模块的测试
 class Resource_Module(unittest.TestCase) :
     initialUsername="ceobe"
@@ -45,30 +44,30 @@ class Resource_Module(unittest.TestCase) :
         r=requests.post(URL+"/admin/resource/submitList",
                         headers= {"token": self.initialToken},
                         json={
-    "resources": {
-        "start_time":"2021-11-22 16:00:00",
-        "over_time":"2021-12-06 03:59:59"
+                    "resources": {
+                        "start_time":"2021-11-22 16:00:00",
+                        "over_time":"2021-12-06 03:59:59"
 
-},
-    "countdown": [
-        {
-            "text": "当前轮换池结束",
-            "remark": "刻俄柏[兑换],水月,赤冬,莱恩哈特[ 兑换],安哲拉",
-            "time": "2022-02-17 03:59:59",
-            "start_time": "2022-02-03 04:00:00",
-            "over_time": "2022-02-17 03:59:59"
-        },
-        {
-            "text": "当前轮换池结束",
-            "remark": "棘刺[兑换]、艾雅法拉、乌有、诗怀雅[兑换]、雷蛇",
-            "time": "2022-02-03 03:59:59",
-            "start_time": "2022-01-20 04:00:00",
-            "over_time": "2022-02-03 03:59:59"
-        }
-    ]
-})
+                },
+                    "countdown": [
+                        {
+                            "text": "当前轮换池结束",
+                            "remark": "刻俄柏[兑换],水月,赤冬,莱恩哈特[ 兑换],安哲拉",
+                            "time": "2022-02-17 03:59:59",
+                            "start_time": "2022-02-03 04:00:00",
+                            "over_time": "2022-02-17 03:59:59"
+                        },
+                        {
+                            "text": "当前轮换池结束",
+                            "remark": "棘刺[兑换]、艾雅法拉、乌有、诗怀雅[兑换]、雷蛇",
+                            "time": "2022-02-03 03:59:59",
+                            "start_time": "2022-01-20 04:00:00",
+                            "over_time": "2022-02-03 03:59:59"
+                        }
+                    ]
+                })
         obj=json.loads(r.text)
-        assert obj['code'] is None
+        self.assertEqual(obj['code'],None)
 
     def test_uploadResource_cooker(self) :
         token=self.login_getToken(self.cookerUsername,self.exchange_to_md5(self.cookerPassword))
@@ -98,7 +97,7 @@ class Resource_Module(unittest.TestCase) :
                                   ]
                               })
         obj = json.loads(r.text)
-        assert obj['code'] is None
+        self.assertEqual(obj['code'],None)
 
     def test_uploadResource_architect(self) :
         token=self.login_getToken(self.architectUsername,self.exchange_to_md5(self.architectPassword))
@@ -135,13 +134,13 @@ class Resource_Module(unittest.TestCase) :
         r=requests.get(URL+'/admin/resource/list',
                        headers={"token":self.initialToken})
         obj=json.loads(r.text)
-        assert obj['code'] is None
+        self.assertEqual(obj['code'],None)
 
     def test_getResourceList_cooker(self):
         r=requests.get(URL+'/admin/resource/list',
                        headers={"token":self.login_getToken(self.cookerUsername,self.exchange_to_md5(self.cookerPassword))})
         obj=json.loads(r.text)
-        assert obj['code'] is None
+        self.assertEqual(obj['code'],None)
 
     def test_getResourceList_architect(self):
         r=requests.get(URL+'/admin/resource/list',
