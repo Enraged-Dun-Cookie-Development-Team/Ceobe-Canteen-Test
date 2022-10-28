@@ -42,7 +42,7 @@ class EditUserName_Module(unittest.TestCase):
                           headers={"token": token},
                           json={"username": "newchefname"})
         obj = json.loads(r.text)
-        self.assertEqual(obj['code'], None)
+        self.assertEqual(obj['code'], "00000")
 
     def test_changeUsername_cooker(self):
         token = self.login_getToken(self.cookerUsername,self.exchange_to_md5(self.cookerPassword))
@@ -50,15 +50,15 @@ class EditUserName_Module(unittest.TestCase):
                           headers={"token": token},
                           json={"username": "newcookername"})
         obj = json.loads(r.text)
-        self.assertEqual(obj['code'], None)
+        self.assertEqual(obj['code'], "00000")
 
     def test_changeUsername_architect(self):
         token = self.login_getToken(self.architectUsername,self.exchange_to_md5(self.architectPassword))
         r = requests.post(URL+'/admin/user/changeUsername',
                           headers={"token": token},
-                          json={"username": "newarchitectname"})
+                          json={"username": "newarchitname"})
         obj = json.loads(r.text)
-        self.assertEqual(obj['code'], None)
+        self.assertEqual(obj['code'], "00000")
 
     @classmethod
     def setUpClass(cls):
@@ -70,7 +70,7 @@ class EditUserName_Module(unittest.TestCase):
         requests.post(URL+'/admin/user/changeUsername',
                           headers={"token": cookerToken},
                           json={"username": "testcooker"})
-        architectToken = cls.login_getToken(cls,'newarchitectname',cls.exchange_to_md5(cls,cls.architectPassword))
+        architectToken = cls.login_getToken(cls,'newarchitname',cls.exchange_to_md5(cls,cls.architectPassword))
         requests.post(URL+'/admin/user/changeUsername',
                           headers={"token": architectToken},
                           json={"username": "testarchitect"})
@@ -86,7 +86,7 @@ class EditUserName_Module(unittest.TestCase):
         requests.post(URL+'/admin/user/changeUsername',
                           headers={"token": cookerToken},
                           json={"username": "testcooker"})
-        architectToken = cls.login_getToken(cls,'newarchitectname',cls.exchange_to_md5(cls,cls.architectPassword))
+        architectToken = cls.login_getToken(cls,'newarchitname',cls.exchange_to_md5(cls,cls.architectPassword))
         requests.post(URL+'/admin/user/changeUsername',
                           headers={"token": architectToken},
                           json={"username": "testarchitect"})
