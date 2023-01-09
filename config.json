@@ -1,0 +1,24 @@
+{
+  "testpara":{
+    "URL": "http://127.0.0.1:8000/api/v1",
+    "Accounts": {
+      "chef": {
+        "username": "testchef",
+        "password": "0abtxnRZ8F"
+      },
+      "architect": {
+        "username":"testarchitect" ,
+        "password": "K5SJl8WbWz"
+      },
+      "cooker": {
+        "username": "testcooker",
+        "password":  "VTbXkp1AGd"
+      },
+      "initial": {
+        "username": "ceobe",
+        "password": "fdb04988b4e48c4f16952457e86b8d25"
+      }
+    }
+  }
+
+}
